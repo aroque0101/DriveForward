@@ -1,0 +1,45 @@
+# Driver Payment System
+
+This is a simple Python script that allows you to record driver payments and track missed payments using an SQLite database.
+
+## Features
+
+- Record driver payments by entering the driver ID, payment amount, and payment date.
+- Check for missed payments by entering the driver ID and identifying if any payments are overdue.
+- Calculate the total payments made for a driver.
+
+## Prerequisites
+
+- Python 3.x
+- SQLite
+
+## Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/driver-payment-system.git
+## Navigate to Project Directory
+cd driver-payment-system
+
+## Install required dependencies 
+pip install -r requirements.txt
+
+## Run the required script
+
+Usage
+Follow the on-screen instructions to perform different actions:
+
+Record Payment: Enter the driver ID, payment amount, and payment date to record a payment.
+Check Missed Payments: Enter the driver ID to check if any payments are overdue.
+Check Total Payments: Enter the driver ID to calculate the total payments made for a driver.
+Contributing
+Contributions are welcome! If you have any ideas, improvements, or bug fixes, please open an issue or submit a pull request.
+
+License
+This project is licensed under the MIT License.
+
+Feel free to modify the content based on your specific project requirements. Include installation instructions, usage examples, contribution guidelines, and a license section. Replace "your-username" in the repository URL with your GitHub username.
+
+Additionally, don't forget to include a license file (e.g., LICENSE) in the project directory if you choose a license other than the MIT License.
+
