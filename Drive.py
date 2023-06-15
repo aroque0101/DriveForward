@@ -20,24 +20,44 @@ conn.execute('''
 ''')
 
 def record_payment():
-    driver_id = int(input("Enter the driver ID: "))
+    choice = input("Enter 'id' to enter driver ID or 'name' to enter driver name: ")
 
-    cursor = conn.execute('''
-        SELECT driver_name
-        FROM drivers
-        WHERE driver_id = ?
-    ''', (driver_id,))
+    if choice == "id":
+        driver_id = int(input("Enter the driver ID: "))
+        cursor = conn.execute('''
+            SELECT driver_name
+            FROM drivers
+            WHERE driver_id = ?
+        ''', (driver_id,))
+    elif choice == "name":
+        driver_name = input("Enter the driver name: ")
+        driver_name = driver_name.lower()
+        cursor = conn.execute('''
+            SELECT driver_id
+            FROM drivers
+            WHERE LOWER(driver_name) = ?
+        ''', (driver_name,))
+    else:
+        print("Invalid choice. Please try again.")
+        return
 
     row = cursor.fetchone()
 
     if row is None:
-        driver_name = input("Enter the driver name: ")
-        conn.execute('''
-            INSERT INTO drivers (driver_id, driver_name)
-            VALUES (?, ?)
-        ''', (driver_id, driver_name))
+        if choice == "id":
+            driver_name = input("Enter the driver name: ")
+            conn.execute('''
+                INSERT INTO drivers (driver_id, driver_name)
+                VALUES (?, ?)
+            ''', (driver_id, driver_name))
+        else:
+            driver_id = int(input("Enter the driver ID: "))
+            conn.execute('''
+                INSERT INTO drivers (driver_id, driver_name)
+                VALUES (?, ?)
+            ''', (driver_id, driver_name))
     else:
-        driver_name = row[0]
+        driver_id, driver_name = row
 
     amount = float(input("Enter the payment amount: "))
     payment_date = input("Enter the payment date (YYYY-MM-DD): ")
